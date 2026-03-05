@@ -1,6 +1,26 @@
-# **Capstone Project of the Machine Learning ZoomCamp course**
+<h1 align="center">
+    PredAMP-ML
+</h1>
 
-## **Table of contents:**
+<p align="center">
+  <img src="Img/logo/predic-amp-logo.svg" width="300" alt="predict-amp-logo"/>
+  <br>
+</p>
+
+<p align="center">
+    <a href="https://github.com/sayalaruano/PredAMP-ML/blob/main/LICENSE.md">
+        <img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+    </a>
+    <a href="https://ampredst.streamlit.app/">
+        <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Streamlit App">
+    </a>
+</p>
+
+<p align="center">
+   Prediction of antimicrobial peptides using machine learning classifiers. It was my capstone project of the Machine Learning ZoomCamp Course.
+</p>
+
+## Table of contents:
 
 - [About the project](#about-the-project)
 - [Dataset](#dataset)
@@ -13,7 +33,7 @@
 - [Structure of the repository](#structure-of-the-repository)
 - [Contact](#contact)
 
-## **About the project**
+## About the project
 
 [Antimicrobial peptides](https://en.wikipedia.org/wiki/Antimicrobial_peptides) (AMPs) are small bioactive drugs, commonly with fewer than 50 amino acids, which have appeared as promising compounds to control infectious disease caused by multi-drug resistant bacteria or superbugs. These superbugs are not treatable with the available drugs because of the development of some mechanisms to avoid the action of these compounds, which is known as antimicrobial resistance (AMR). According to the World Health Organization, AMR is one of the [top ten global public health threats facing humanity in this century](https://www.who.int/news-room/fact-sheets/detail/antimicrobial-resistance), so it is important to search for AMPs that combat these superbugs and prevent AMR.
 
@@ -21,7 +41,7 @@ However, the search for AMPs to combat superbugs by experimental methods is unfe
 
 For this work, I took as a reference the [notebook](https://github.com/dataprofessor/peptide-ml) and [video](https://www.youtube.com/watch?v=0NrFIGLwW0Q&feature=youtu.be) from [Dataprofessor](https://github.com/dataprofessor) about this topic. Also, the datasets, some ideas, and references to compare the performance of the best model were obtained from this [article](https://pubs.acs.org/doi/10.1021/acs.jcim.1c00251).
 
-## **Dataset**
+## Dataset
 
 The [dataset](https://biocom-ampdiscover.cicese.mx/dataset) for this project consists of text files (in FASTA format) with sequences of active and non-active AMPs. The active AMPs were obtained by experimental assays, while the non-active peptides were derived from computational methods. The following table summarizes the dataset partitions and the number of instances in each one.
 
@@ -35,7 +55,7 @@ AMPs can have more than one activity, including antibacterial, antifungal, antip
 
 Also, I chose these benchmark datasets to compare the performance metrics of our best models with the results of other methods reported in this [article](https://pubs.acs.org/doi/10.1021/acs.jcim.1c00251).
 
-## **Data preparation and feature matrices**
+## Data preparation and feature matrices
 
 The feature matrices to train machine learning models were obtained by calculating some molecular features from the amino acid sequences of AMPs. These features were obtained with the [Pfeature](https://github.com/raghavagps/Pfeature) Python library.
 
@@ -60,13 +80,13 @@ Also, I used the [CD-HIT](https://github.com/weizhongli/cdhit) software to remov
 
 You can find the code for this part in the **Feature matrices preparation** section of this [jupyter notebook](EDA_Binary_classifiers_AMPs_activity.ipynb).
 
-## **Machine Learning Models**
+## Machine Learning Models
 
 First, I tested more than 30 ML binary classifiers using the [LazyPredict](https://github.com/shankarpandala/lazypredict) Python library. I chose the best models according to some performance metrics such as accuracy, ROC AUC, precision, recall, F1 score, and Matthews Correlation Coefficient (MCC). Then, I fine-tuned the hyperparameters of the best models using sklearn's class [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV). Finally, considering the results of hyperparameter tuning and performance metrics, I obtained the best ML model to predict AMPs activity.
 
 You can find the code for this part in the **Machine learning models** section of this [jupyter notebook](EDA_Binary_classifiers_AMPs_activity.ipynb).
 
-## **Results of the best ML model**
+## Results of the best ML model
 
 The best model was ExtraTreesClassifier with `max_depth` of 50 and `n_estimators` of 200 as hyperparameters (the others were set as default), and `Amino acid Composition` (aac_wp) as feature matrix.
 
@@ -85,7 +105,7 @@ According to the evaluation results of our best model on test and external datas
 
 You can find the code for this part in the **Machine learning models** section of this [jupyter notebook](EDA_Binary_classifiers_AMPs_activity.ipynb), or in this [Python script](train.py).
 
-## **Python virtual environment and installation of required libraries**
+## Python virtual environment and installation of required libraries
 
 I used [Pipenv](https://pypi.org/project/pipenv/) to create a Python virtual environment, which allows the management of python libraries and their dependencies. Each Pipenv virtual environment has a `Pipfile` with the names and versions of packages installed in the virtual environment, and a `Pipfile.lock`, a JSON file that contains versions of packages, and dependencies required for each package.
 
@@ -106,7 +126,7 @@ You can find a detailed guide on how to use pipenv [here](https://realpython.com
 
 However, if you use the Dockerfile of this project, you do not need to run these commands because Docker installs all Operative System and Python requirements, as is explained in the next section.
 
-## **How to run this app as a web service in a local server?**
+## How to run this app as a web service in a local server?
 
 [Docker](https://www.docker.com/) allows to create **containers**, which are isolated environments with specific system requirements such as OS, libraries, programs, dependencies, among others. You can follow [instructions of the official documentation](https://docs.docker.com/engine/install/) to install this program, depending on your OS and other details.
 
@@ -140,7 +160,7 @@ Then, you should open another terminal and run the `predict-test.py` python scri
 
 If you want to make predictions on other AMPs, replace the `sequence` variable of the `predict-test.py` python script with the corresponding sequence.
 
-## **How to run this app as a web service in the cloud?**
+## How to run this app as a web service in the cloud?
 
 I used [Heroku](https://www.heroku.com/home) for hosting the web service in the cloud. For doing the deployment into the cloud, I followed [a tutorial](https://github.com/nindate/ml-zoomcamp-exercises/blob/main/how-to-use-heroku.md) provided by one of the members of the Machine Learning Zoomcamp, which has details and code required to deploy a web service to the cloud with Heroku.
 
@@ -154,7 +174,15 @@ If you want to try this option, you can replace the `url` variable of the `predi
 
 Then, you need to run the `predict-test.py` python script in a terminal as in the last section, and you should obtain the same output without running the docker container locally.
 
-## **Structure of the repository**
+## Web application
+
+Using the best ML model, I created [AMPredST][ampredst], a web application that allows users to predict the antimicrobial activity and general properties of AMPs. The code for this web application is available in this [GitHub repository][ampredst_github]. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sayalaruano/AMPredST/main/ampredst.gif" width="800" title="AMPredST">
+</p>
+
+## Structure of the repository
 
 The main files and directories of this repository are:
 
@@ -172,6 +200,9 @@ The main files and directories of this repository are:
 |[Output/](Output/)|Folder to save performance metrics and results of machine learning models|
 |[Img/](Img/)|Folder to save images|
 
-## **Contact**
+## Contact
 
 If you have comments or suggestions about this project, you can [open an issue](https://github.com/sayalaruano/CapstoneProject-MLZoomCamp/issues/new) in this repository, or email me at sebasar1245@gamil.com.
+
+[ampredst]: https://ampredst.streamlit.app/
+[ampredst_github]: https://github.com/sayalaruano/AMPredST
