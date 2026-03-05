@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-   Prediction of antimicrobial peptides using machine learning classifiers. It was my capstone project of the Machine Learning ZoomCamp Course.
+   Prediction of the activity of antimicrobial peptides using machine learning classifiers. It was my capstone project of the Machine Learning ZoomCamp Course.
 </p>
 
 ## Table of contents:
