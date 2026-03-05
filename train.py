@@ -18,11 +18,11 @@ from sklearn.metrics import make_scorer
 maxdepth = 50
 nestimators = 200
 n_splits = 5
-output_file = f'ExtraTreesClassifier_maxdepth{maxdepth}_nestimators{nestimators}.bin'
+#output_file = f'ExtraTreesClassifier_maxdepth{maxdepth}_nestimators{nestimators}.bin'
 
 # Data preparation
 ## Load feature matrix for training - Amino acid composition (dataset with the best performance)
-aac_featmat = pd.read_csv('Data/aac_wp_training.csv', index_col=0)
+aac_featmat = pd.read_csv('Data/aac_wp_train_complete.csv', index_col=0)
 
 ## Extract y target variable - AMPs activity
 y = aac_featmat['class'].copy()
@@ -115,7 +115,7 @@ print(results_bestMLmodel.round(2))
 
 # Save the model
 
-with open(output_file, "wb") as f_out:
-    pickle.dump(etc_def, f_out)
+#with open(output_file, "wb") as f_out:
+ #   pickle.dump(etc_def, f_out)
 
-print(f'The model is saved to {output_file}')
+#print(f'The model is saved to {output_file}')

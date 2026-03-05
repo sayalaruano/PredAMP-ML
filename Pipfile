@@ -10,6 +10,7 @@ tqdm = "*"
 flask = "*"
 gunicorn = "*"
 scikit-learn = "*"
+requests = "*"
 
 [dev-packages]
 

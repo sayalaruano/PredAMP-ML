@@ -3,3 +3,5 @@
 __pycache
 Data/PF_features/
 ExtraTreesClassifier_maxdepth50_nestimators200.bin
+Pfeature/
+Pfeature.zip

@@ -9,12 +9,14 @@ import requests
 # Parameters 
 # If you want to run this service locally with docker, you 
 # should use this url: http://localhost:9696/predict
+# while we want to run it online you should use this link:
+# https://amp-prediction.herokuapp.com/predict
 
-url = 'https://amps-prediction.herokuapp.com/predict'
+url = 'http://localhost:9696/predict'
 
 id = 'Sequence0019'
 
-sequence = 'VFLDEFKNKEGEPMGVIIQKKDGGYLYTTTDIA'
+sequence = 'LAWVKFEKGEFAGGVSKFLAESTDSFVNELKLTDNDLVLFVADSLDVA'
 
 # Create a json file of the AMP to be predicted 
 amp = {
